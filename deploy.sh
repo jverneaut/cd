@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 git config --global push.default simple
 
