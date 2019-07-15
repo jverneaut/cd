@@ -1,3 +1,17 @@
 language: node_js
 node_js:
-  - '10'
+- '10'
+
+addons:
+  ssh_known_hosts: 165.22.68.209
+
+before_install:
+- openssl aes-256-cbc -K $encrypted_da006d3a8bf6_key -iv $encrypted_da006d3a8bf6_iv
+  -in deploy-key.enc -out deploy-key -d
+
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: bash deploy.sh
+    on:
+      branch: master
